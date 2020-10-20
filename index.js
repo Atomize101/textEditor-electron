@@ -1,7 +1,8 @@
 const fs = require('fs');
 const { ipcRenderer } = require('electron');
 
-ipcRenderer.on('file', (event, content) => {
-	document.getElementById('code').innerHTML = content;
-	console.log(content);
+ipcRenderer.on('fileOpened', (event, { contents, filePath }) => {
+	document.getElementById('code').value = contents;
+	document.getElementById('file-path').value = filePath;
+	console.log(contents);
 });

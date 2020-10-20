@@ -9,12 +9,21 @@ const template = [
 		label: 'File',
 		submenu: [
 			{
+				label: 'Save File',
+				click: async () => {},
+			},
+		],
+		submenu: [
+			{
 				label: 'Open File',
 				click: async () => {
 					const { filePaths } = await dialog.showOpenDialog({ properties: ['openFile'] });
 					const file = filePaths[0];
 					const contents = fs.readFileSync(file, 'utf-8');
-					win.webContents.send('file', contents);
+					win.webContents.send('fileOpened', {
+						contents,
+						filePath: file,
+					});
 					console.log(contents);
 				},
 			},
