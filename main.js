@@ -1,4 +1,5 @@
 const { app, BrowserWindow, Menu } = require('electron');
+const fs = require('fs');
 require('electron-reload')(__dirname);
 const { dialog } = require('electron');
 
@@ -11,7 +12,8 @@ const template = [
 				click: async () => {
 					const { filePaths } = await dialog.showOpenDialog({ properties: ['openFile'] });
 					const file = filePaths[0];
-					console.log(file);
+					const contents = fs.readFileSync(file, 'utf-8');
+					console.log(contents);
 				},
 			},
 		],
