@@ -3,6 +3,7 @@ const fs = require('fs');
 require('electron-reload')(__dirname);
 const { dialog } = require('electron');
 
+let win;
 const template = [
 	{
 		label: 'File',
@@ -13,6 +14,7 @@ const template = [
 					const { filePaths } = await dialog.showOpenDialog({ properties: ['openFile'] });
 					const file = filePaths[0];
 					const contents = fs.readFileSync(file, 'utf-8');
+					win.webContents.send('file', contents);
 					console.log(contents);
 				},
 			},
@@ -24,7 +26,7 @@ const menu = Menu.buildFromTemplate(template);
 Menu.setApplicationMenu(menu);
 
 function createWindow() {
-	const win = new BrowserWindow({
+	win = new BrowserWindow({
 		width: 800,
 		height: 600,
 		webPreferences: {
@@ -43,3 +45,5 @@ app.on('window-all-closed', () => {
 		app.quit();
 	}
 });
+
+app.whenReady().then(createWindow);
