@@ -1,3 +1,3 @@
 const fs = require('fs');
 
-console.log('testing');
+console.log('File opened');

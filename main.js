@@ -1,5 +1,6 @@
 const { app, BrowserWindow, Menu } = require('electron');
 require('electron-reload')(__dirname);
+const { dialog } = require('electron');
 
 const template = [
 	{
@@ -7,8 +8,10 @@ const template = [
 		submenu: [
 			{
 				label: 'Open File',
-				click: () => {
-					console.log('file opened');
+				click: async () => {
+					const { filePaths } = await dialog.showOpenDialog({ properties: ['openFile'] });
+					const file = filePaths[0];
+					console.log(file);
 				},
 			},
 		],
