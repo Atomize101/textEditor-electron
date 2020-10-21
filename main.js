@@ -12,8 +12,6 @@ const template = [
 				label: 'Save File',
 				click: async () => {},
 			},
-		],
-		submenu: [
 			{
 				label: 'Open File',
 				click: async () => {
