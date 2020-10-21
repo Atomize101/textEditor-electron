@@ -7,6 +7,7 @@ const codeElm = document.getElementById('code');
 
 ipcRenderer.on('fileOpened', (event, { contents, filePath }) => {
 	openedFilePath = filePath;
+	codeElm.value = contents;
 	document.getElementById('code').value = contents;
 	document.getElementById('file-path').innerText = filePath;
 	console.log(contents);

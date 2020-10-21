@@ -9,6 +9,8 @@ const template = [
 		label: 'File',
 		submenu: [
 			{
+				id: 'save-file',
+				enabled: false,
 				label: 'Save File',
 				click: async () => {
 					win.webContents.send('saveFile');
@@ -24,7 +26,8 @@ const template = [
 						contents,
 						filePath: file,
 					});
-					console.log(contents);
+					const saveFileItem = menu.getMenuItemById('save-file');
+					saveFileItem.enabled = true;
 				},
 			},
 		],
