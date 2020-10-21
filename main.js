@@ -11,6 +11,7 @@ const template = [
 			{
 				id: 'save-file',
 				enabled: false,
+				accelerator: 'Ctrl+S',
 				label: 'Save File',
 				click: async () => {
 					win.webContents.send('saveFile');
@@ -18,6 +19,8 @@ const template = [
 			},
 			{
 				label: 'Open File',
+				accelerator: 'Ctrl+O',
+
 				click: async () => {
 					const { filePaths } = await dialog.showOpenDialog({ properties: ['openFile'] });
 					const file = filePaths[0];
