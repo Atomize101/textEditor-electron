@@ -1,17 +1,27 @@
 {
-  "name": "texteditor-electron",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron ."
-  },
-  "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "electron": "^10.1.4"
-  },
-  "dependencies": {
-    "electron-reload": "^1.5.0"
-  }
+	"name": "texteditor-electron",
+	"version": "1.0.0",
+	"description": "",
+	"main": "main.js",
+	"scripts": {
+		"start": "electron .",
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder"
+	},
+	"build": {
+		"appId": "your.id",
+		"mac": {
+			"category": "your.app.category.type"
+		}
+	},
+	"author": "",
+	"license": "MIT",
+	"devDependencies": {
+		"electron": "^10.1.4",
+		"electron-builder": "^22.9.1",
+		"electron-reload": "^1.5.0"
+	},
+	"dependencies": {
+		"electron-reload": "^1.5.0"
+	}
 }
