@@ -10,7 +10,9 @@ const template = [
 		submenu: [
 			{
 				label: 'Save File',
-				click: async () => {},
+				click: async () => {
+					win.webContents.send('saveFile');
+				},
 			},
 			{
 				label: 'Open File',
